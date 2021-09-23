@@ -1,30 +1,30 @@
-import { useRef } from 'react'
+import { useRef } from "react";
 
 import classes from "./NewMeetupForm.module.css";
 import Card from "../ui/Card";
 
 const NewMeetupForm = (props) => {
-  const titleInputRef = useRef()
-  const imageInputRef = useRef() 
-  const addressInputRef = useRef()
-  const descriptionInputRef = useRef()
+  const titleInputRef = useRef();
+  const imageInputRef = useRef();
+  const addressInputRef = useRef();
+  const descriptionInputRef = useRef();
 
   function submitHandler(event) {
-    event.preventDefault()
+    event.preventDefault();
 
-    const enteredTitle = titleInputRef.current.value
-    const enteredImage = imageInputRef.current.value
-    const enteredAddress = addressInputRef.current.value
-    const enteredDescription = descriptionInputRef.current.value
+    const enteredTitle = titleInputRef.current.value;
+    const enteredImage = imageInputRef.current.value;
+    const enteredAddress = addressInputRef.current.value;
+    const enteredDescription = descriptionInputRef.current.value;
 
     const item = {
       title: enteredTitle,
       image: enteredImage,
       address: enteredAddress,
       description: enteredDescription,
-    }
-    
-    props.onAddMeetup(item)
+    };
+
+    props.onAddMeetup(item);
   }
 
   return (
@@ -45,7 +45,12 @@ const NewMeetupForm = (props) => {
           </div>
           <div className={classes.control}>
             <label htmlFor="description">Description</label>
-            <textarea required id="description" rows='5' ref={descriptionInputRef} ></textarea>
+            <textarea
+              required
+              id="description"
+              rows="5"
+              ref={descriptionInputRef}
+            ></textarea>
           </div>
           <div className={classes.actions}>
             <button>Add</button>
