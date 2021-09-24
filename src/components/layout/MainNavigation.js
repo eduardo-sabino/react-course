@@ -1,26 +1,33 @@
 import { Link } from "react-router-dom";
 import classes from "./MainNavigation.module.css";
+import { useState } from "react";
 
 const MainNavigation = () => {
+  const [isChecked, setIsChecked] = useState(false)
+
+  function toggleCheckBox(){
+      setIsChecked(!isChecked)
+  }
+
   return (
     <header className={classes.header}>
-      <label className={classes.icon} htmlFor="iconId">
+      <label className={classes.icon} htmlFor="iconId" onClick={toggleCheckBox}>
         <i className="fa fa-bars"></i>
       </label>
       <div className={classes.logo}>
         React <span>Meetups</span>
       </div>
       <nav>
-        <input type="checkbox" id="iconId" />
+        <input type="checkbox" id="iconId" checked={isChecked} readOnly/>
         <ul>
           <li>
-            <Link to="/">All Meetups</Link>
+            <Link to="/" onClick={toggleCheckBox}>All Meetups</Link>
           </li>
           <li>
-            <Link to="/new-meetup">New Meetup</Link>
+            <Link to="/new-meetup" onClick={toggleCheckBox}>New Meetup</Link>
           </li>
           <li>
-            <Link to="/favorites">My Favorites</Link>
+            <Link to="/favorites" onClick={toggleCheckBox}>My Favorites</Link>
           </li>
         </ul>
       </nav>
